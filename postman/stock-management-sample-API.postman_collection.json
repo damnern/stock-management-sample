@@ -1,0 +1,1002 @@
+{
+	"info": {
+		"_postman_id": "c1d9029e-01c0-49fd-a796-77ace727c8fd",
+		"name": "stock-management-sample-API",
+		"description": "To test stock-management-sample project.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44044024"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users - /users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>Task ID</th>\r",
+									"        <th>Task Serial</th>\r",
+									"        <th>Created By</th>\r",
+									"        <th>Assigned To</th>\r",
+									"        <th>Product</th>\r",
+									"        <th>Started At</th>\r",
+									"        <th>Finished At</th>\r",
+									"        <th>Type</th>\r",
+									"        <th>Status</th>\r",
+									"    </tr>\r",
+									"    \r",
+									"    {{#each response}}\r",
+									"        <tr>\r",
+									"            <td>{{task_id}}</td>\r",
+									"            <td>{{task_serial}}</td>\r",
+									"            <td>{{created_by}}</td>\r",
+									"            <td>{{assigned_to}}</td>\r",
+									"            <td>{{product}}</td>\r",
+									"            <td>{{started_at}}</td>\r",
+									"            <td>{{finished_at}}</td>\r",
+									"            <td>{{type}}</td>\r",
+									"            <td>{{status}}</td>\r",
+									"        </tr>\r",
+									"    {{/each}}\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {response: pm.response.json()}\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by ID - /users/id/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>Task ID</th>\r",
+									"        <th>Task Serial</th>\r",
+									"        <th>Created By</th>\r",
+									"        <th>Assigned To</th>\r",
+									"        <th>Product</th>\r",
+									"        <th>Started At</th>\r",
+									"        <th>Finished At</th>\r",
+									"        <th>Type</th>\r",
+									"        <th>Status</th>\r",
+									"    </tr>\r",
+									"    \r",
+									"    {{#each response}}\r",
+									"        <tr>\r",
+									"            <td>{{task_id}}</td>\r",
+									"            <td>{{task_serial}}</td>\r",
+									"            <td>{{created_by}}</td>\r",
+									"            <td>{{assigned_to}}</td>\r",
+									"            <td>{{product}}</td>\r",
+									"            <td>{{started_at}}</td>\r",
+									"            <td>{{finished_at}}</td>\r",
+									"            <td>{{type}}</td>\r",
+									"            <td>{{status}}</td>\r",
+									"        </tr>\r",
+									"    {{/each}}\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {response: pm.response.json()}\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/id/{{userID}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"id",
+								"{{userID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New User -/users/create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"New Employee\",\r\n    \"role\": \"employee\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Name -/users/id/:id/name",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"New {{userID}} Name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/id/{{userID}}/name",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"id",
+								"{{userID}}",
+								"name"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Role -/users/id/:id/role",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": \"supervisor\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/id/{{userID}}/role",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"id",
+								"{{userID}}",
+								"role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User - /users/id/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/id/{{userID}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"id",
+								"{{userID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "StockTasks",
+			"item": [
+				{
+					"name": "Create",
+					"item": [
+						{
+							"name": "Create Regular task -/stock/create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"createdUser\": 1,\r\n    \"productID\": \"Base Regular Product\",\r\n    \"type\": \"Regular\",\r\n    \"refs\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Urgent task -/stock/create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"createdUser\": 1,\r\n    \"productID\": \"Base Urgent Product\",\r\n    \"type\": \"Urgent\",\r\n    \"refs\": \"Free Description for Urgent task.\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Special task -/stock/create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"createdUser\": 1,\r\n    \"productID\": \"Base Special Product\",\r\n    \"type\": \"Special\",\r\n    \"refs\": {\r\n        \"width\":1.0,\r\n        \"length\":0.5,\r\n        \"height\":2.2,\r\n        \"weight\":1.5,\r\n        \"instruction\": \"Special instruction\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get",
+					"item": [
+						{
+							"name": "Get All Task - /stock/tasks",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var template = `\r",
+											"<style type=\"text/css\">\r",
+											"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+											"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+											"    .tftable tr {background-color:#ffffff;}\r",
+											"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+											"    .tftable tr:hover {background-color:#e0ffff;}\r",
+											"</style>\r",
+											"\r",
+											"<table class=\"tftable\" border=\"1\">\r",
+											"    <tr>\r",
+											"        <th>Task ID</th>\r",
+											"        <th>Task Serial</th>\r",
+											"        <th>Created By</th>\r",
+											"        <th>Assigned To</th>\r",
+											"        <th>Product</th>\r",
+											"        <th>Started At</th>\r",
+											"        <th>Finished At</th>\r",
+											"        <th>Type</th>\r",
+											"        <th>Status</th>\r",
+											"    </tr>\r",
+											"    \r",
+											"    {{#each response}}\r",
+											"        <tr>\r",
+											"            <td>{{task_id}}</td>\r",
+											"            <td>{{task_serial}}</td>\r",
+											"            <td>{{created_by}}</td>\r",
+											"            <td>{{assigned_to}}</td>\r",
+											"            <td>{{product}}</td>\r",
+											"            <td>{{started_at}}</td>\r",
+											"            <td>{{finished_at}}</td>\r",
+											"            <td>{{type}}</td>\r",
+											"            <td>{{status}}</td>\r",
+											"        </tr>\r",
+											"    {{/each}}\r",
+											"</table>\r",
+											"`;\r",
+											"\r",
+											"function constructVisualizerPayload() {\r",
+											"    return {response: pm.response.json()}\r",
+											"}\r",
+											"\r",
+											"pm.visualizer.set(template, constructVisualizerPayload());"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/tasks",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"tasks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Task by ID - stock/tasks/id/:id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/tasks/id/{{taskID}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"tasks",
+										"id",
+										"{{taskID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Task by serial - stock/tasks/serial/:serial",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/tasks/serial/{{taskSerial}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"tasks",
+										"serial",
+										"{{taskSerial}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"item": [
+						{
+							"name": "ByID",
+							"item": [
+								{
+									"name": "Update Product -/stock/id/:id/product",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"product\": \"New Product Name for Task ID:{{taskID}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/stock/id/{{taskID}}/product",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"stock",
+												"id",
+												"{{taskID}}",
+												"product"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Task -/stock/id/:id/status",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"status\": \"Assigned\",\r\n    \"refs\": 2\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/stock/id/{{taskID}}/status",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"stock",
+												"id",
+												"{{taskID}}",
+												"status"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Update Task to Assigned",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"status\": \"Assigned\",\r\n    \"refs\": 2\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/stock/id/{{taskID}}/status",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"stock",
+														"id",
+														"{{taskID}}",
+														"status"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										},
+										{
+											"name": "Update Task to In Progress",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"status\": \"In Progress\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/stock/id/{{taskID}}/status",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"stock",
+														"id",
+														"{{taskID}}",
+														"status"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										},
+										{
+											"name": "Update Task to Done",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"status\": \"Done\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/stock/id/{{taskID}}/status",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"stock",
+														"id",
+														"{{taskID}}",
+														"status"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										},
+										{
+											"name": "Update Task to Cancelled",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"status\": \"Cancelled\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/stock/id/{{taskID}}/status",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"stock",
+														"id",
+														"{{taskID}}",
+														"status"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										},
+										{
+											"name": "Update Task to Cancelled by requester",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"status\": \"Cancelled by Requester\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/stock/id/{{taskID}}/status",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"stock",
+														"id",
+														"{{taskID}}",
+														"status"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "BySerial",
+							"item": [
+								{
+									"name": "Update Product -/stock/serial/:serial/product",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"product\": \"New Product Name for Task ID:{{taskSerial}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/stock/serial/{{taskSerial}}/product",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"stock",
+												"serial",
+												"{{taskSerial}}",
+												"product"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Task -/stock/serial/:serial/status",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"status\": \"Assigned\",\r\n    \"refs\": 3\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/stock/serial/{{taskSerial}}/status",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"stock",
+												"serial",
+												"{{taskSerial}}",
+												"status"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Update Task to Assigned",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"status\": \"Assigned\",\r\n    \"refs\": 3\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/stock/serial/{{taskSerial}}/status",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"stock",
+														"serial",
+														"{{taskSerial}}",
+														"status"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										},
+										{
+											"name": "Update Task to In Progress",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"status\": \"In Progress\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/stock/serial/{{taskSerial}}/status",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"stock",
+														"serial",
+														"{{taskSerial}}",
+														"status"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										},
+										{
+											"name": "Update Task to Done",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"status\": \"Done\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/stock/serial/{{taskSerial}}/status",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"stock",
+														"serial",
+														"{{taskSerial}}",
+														"status"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										},
+										{
+											"name": "Update Task to Cancelled",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"status\": \"Cancelled\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/stock/serial/{{taskSerial}}/status",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"stock",
+														"serial",
+														"{{taskSerial}}",
+														"status"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										},
+										{
+											"name": "Update Task to Cancelled by requester",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"status\": \"Cancelled by Requester\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/stock/serial/{{taskSerial}}/status",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"stock",
+														"serial",
+														"{{taskSerial}}",
+														"status"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"item": [
+						{
+							"name": "Delete Task by ID - stock/tasks/id/:id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/tasks/id/{{taskID}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"tasks",
+										"id",
+										"{{taskID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Task by serial - stock/tasks/serial/:serial",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/tasks/serial/{{taskSerial}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"tasks",
+										"serial",
+										"{{taskSerial}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Basic Ping - /greet",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/greet",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"greet"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
