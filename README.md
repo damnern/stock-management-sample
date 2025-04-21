@@ -26,7 +26,7 @@ ________
 	```
 4. Run compose command
 	```
-	docker compose up -d
+	docker compose up --build
 	```
 5. Wait for Docker to setup the project environment.
 6. Once setup is done. Now you can try to access phpMyAdmin via http://localhost:8081/ using defalt username/password
@@ -47,6 +47,6 @@ At this state, you can use [Postman](https://www.postman.com/) to test the API.
 
 ________
 ### To be implement
-- Authetication accord to user's role.
+- Authentication accord to user's role.
 - React webpage frontend
 - Additional logs
